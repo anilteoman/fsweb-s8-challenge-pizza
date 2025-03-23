@@ -7,7 +7,7 @@ function App() {
   const history = useHistory();
 
   const aciktimButton = () => {
-    history.push("/siparisForm")
+    history.push("/SiparisForm")
   }
   
 
