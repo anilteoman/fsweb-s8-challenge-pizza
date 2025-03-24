@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
-import "./anaSayfa.css";
+
+
 
 import styled from 'styled-components';
 
@@ -36,9 +37,9 @@ color:black;
 
 const AnaSayfa = () => {
   return (
-    <div><Baslik>Teknolojik Yemekler</Baslik>
+    <div><Baslik className="test">Teknolojik Yemekler</Baslik>
     <AnaSayfaYazi>KOD ACIKTIRIR <br/> PIZZA, DOYURUR</AnaSayfaYazi>
-    <Button><StyledLink to="./SiparisOlustur">ACIKTIM</StyledLink></Button> 
+    <StyledLink to="./SiparisSayfa"><Button>ACIKTIM</Button></StyledLink>
 
     </div>
     

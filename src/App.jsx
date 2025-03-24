@@ -1,8 +1,7 @@
 
 
-
 import { Route, Switch } from 'react-router-dom/cjs/react-router-dom.min'
-import './App.css'
+
 import AnaSayfa from './pages/AnaSayfa'
 import SiparisSayfa from './pages/SiparisSayfa'
 
