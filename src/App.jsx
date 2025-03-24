@@ -1,22 +1,26 @@
 
 
-import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
+
+import { Route, Switch } from 'react-router-dom/cjs/react-router-dom.min'
 import './App.css'
+import AnaSayfa from './pages/AnaSayfa'
+import SiparisSayfa from './pages/SiparisSayfa'
 
 function App() {
-  const history = useHistory();
-
-  const aciktimButton = () => {
-    history.push("/SiparisForm")
-  }
+  
   
 
   return (
     <>
-      <h1>Teknolojik Yemekler</h1>
-      <p>KOD ACIKTIRIR</p>
-      <p>PIZZA, DOYURUR</p>
-      <button onClick={aciktimButton}>ACIKTIM</button>
+      <Switch>
+        <Route exact path="/">
+          <AnaSayfa />
+        </Route>
+        <Route path ="/SiparisSayfa">
+          <SiparisSayfa />
+        </Route>
+        
+      </Switch>
     </>
   )
 }
