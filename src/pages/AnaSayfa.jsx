@@ -1,5 +1,6 @@
 import React from 'react'
-import { Link } from 'react-router-dom/cjs/react-router-dom.min';
+import { Link } from 'react-router-dom/cjs/react-router-dom';
+import "./anaSayfa.css";
 
 
 
@@ -19,6 +20,7 @@ font-weight: bold;
 
 const Baslik = styled.h1`
 color:white;
+font-size:2rem;
 
 `
 
@@ -37,7 +39,7 @@ color:black;
 
 const AnaSayfa = () => {
   return (
-    <div><Baslik className="test">Teknolojik Yemekler</Baslik>
+    <div><Baslik>Teknolojik Yemekler</Baslik>
     <AnaSayfaYazi>KOD ACIKTIRIR <br/> PIZZA, DOYURUR</AnaSayfaYazi>
     <StyledLink to="./SiparisSayfa"><Button>ACIKTIM</Button></StyledLink>
 

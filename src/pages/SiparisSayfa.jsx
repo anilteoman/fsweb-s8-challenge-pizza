@@ -10,8 +10,8 @@ const SiparisSayfa = () => {
   return (
     <>
       <header>
-        <button>test</button>
-        <h1>Teknolojik Yemekler</h1>
+        
+      <h1>Teknolojik Yemekler</h1>
         </header>
         
       

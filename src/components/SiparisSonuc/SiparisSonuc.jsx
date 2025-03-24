@@ -2,7 +2,7 @@ import React from 'react'
 
 const SiparisSonuc = () => {
   return (
-    <div>SiparisSonuc</div>
+    <div>Siparişin Başarıyla Alındı!</div>
   )
 }
 
