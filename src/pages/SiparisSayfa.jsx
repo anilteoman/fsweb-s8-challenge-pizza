@@ -1,9 +1,9 @@
 import React from 'react'
 
-const SiparisSayfa = () => {
+const SiparisOlustur = () => {
   return (
-    <div>SiparisSayfa</div>
+    <div>SiparisOlustur</div>
   )
 }
 
-export default SiparisSayfa;
+export default SiparisOlustur;
