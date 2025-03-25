@@ -1,1 +1,5 @@
 @import "tailwindcss";
+
+.p-8 {
+    background-color: white;
+}

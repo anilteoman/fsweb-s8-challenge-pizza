@@ -2,6 +2,7 @@ body {
   background-image: url(/images/iteration-1-images/home-banner.png);
   background-position: center;
   background-size: cover;
+  
 }
 
 .anaSayfaContainer {
@@ -13,13 +14,6 @@ body {
   align-items: center;
 }
 
-.anaSayfaLogo {
-  color: white;
-  font-size: 2rem;
-  font-family: "Satisfy", cursive;
-  font-weight: 400;
-  font-style: normal;
-}
 
 .aciktimBtn {
   background: #fdc913;
@@ -28,6 +22,8 @@ body {
   border-radius: 1.5rem;
   cursor: pointer;
   width: 25%;
+  text-decoration: none;
+  color: black;
 
   font-family: "Barlow", sans-serif;
   font-weight: 500;

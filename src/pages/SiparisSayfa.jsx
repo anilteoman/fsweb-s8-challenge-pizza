@@ -8,10 +8,14 @@ import "./siparisSayfa.css"
 
 const SiparisSayfa = () => {
   return (
-    <>
-      <header>
+    <div>
+      <header className='siparisHeader'>
         
-      <h1>Teknolojik Yemekler</h1>
+      
+      <img src="images\iteration-1-images\logo.svg" alt="ty logo" className='siparisHeaderLogo'/>
+      <nav>
+        <a href="/">Ana Sayfa</a> - <a href="./SiparisSayfa">Sipariş Oluştur</a>
+      </nav>
         </header>
         
       
@@ -24,7 +28,7 @@ const SiparisSayfa = () => {
 
 
 
-      </> 
+      </div> 
   )
 }
 

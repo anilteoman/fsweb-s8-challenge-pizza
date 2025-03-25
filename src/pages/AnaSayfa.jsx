@@ -11,7 +11,8 @@ import "./AnaSayfa.css"
 const AnaSayfa = () => {
   return (
     <div className='anaSayfaContainer'>
-    <h1 className="anaSayfaLogo">Teknolojik Yemekler</h1>
+    
+    <img src="\images\iteration-1-images\logo.svg" alt="ty logo" />
     
     <p className="anaSayfaYazi">KOD ACIKTIRIR PIZZA, DOYURUR</p>
     

@@ -1,162 +1,97 @@
-import React, { useState } from "react";
-import {
-  Card,
-  CardBody,
-  Button,
-  Form,
-  FormGroup,
-  Label,
-  Input,
-  Col,
-  Row,
-} from "reactstrap";
+import React, { useState } from 'react';
+import { Button, Card, CardBody, CardTitle, CardText, Form, FormGroup, Label, Input, Col, Row,} from 'reactstrap';
 
-import "./SiparisForm.css";
-import { useHistory } from "react-router-dom/cjs/react-router-dom";
-const boyutlar = ["Küçük", "Orta", "Büyük"];
-const hamurKalinlik = ["Standart", "İnce Kenar", "Kalın Kenar"];
-const ekMalzeme = [
-  "Pepperoni",
-  "Sosis",
-  "Kanada Jambonu",
-  "Tavuk Toppers",
-  "Soğan",
-  "Domates",
-  "Mısır",
-  "Sucuk",
-  "Jalapeno",
-  "Sarımsak",
-  "Biber",
-  "Ananas",
-  "Kabak",
-];
-
-const SiparisForm = () => {
-  const [selectedSize, setSelectedSize] = useState("");
-  const [selectedDough, setSelectedDough] = useState(hamurKalinlik[0]);
-  const [selectedToppings, setSelectedToppings] = useState([]);
-  const [note, setNote] = useState("");
+const PizzaOrderForm = () => {
+  const [size, setSize] = useState('');
+  const [dough, setDough] = useState('Hamur Kalınlığı');
+  const [toppings, setToppings] = useState([]);
+  const [note, setNote] = useState('');
   const [quantity, setQuantity] = useState(1);
+  const basePrice = 85.5;
+  const toppingPrice = 5;
+
+  const toppingOptions = [
+    'Pepperoni', 'Sosis', 'Kanada Jambonu', 'Tavuk Izgara', 'Soğan', 'Domates',
+    'Mısır', 'Sucuk', 'Jalepeno', 'Sarımsak', 'Biber', 'Ananas', 'Kabak'
+  ];
 
   const handleToppingChange = (topping) => {
-    setSelectedToppings((prev) =>
-      prev.includes(topping)
-        ? prev.filter((item) => item !== topping)
-        : prev.length < 7
-        ? [...prev, topping]
-        : prev
-    );
+    setToppings(prev => prev.includes(topping)
+      ? prev.filter(t => t !== topping)
+      : [...prev, topping]);
   };
 
-  const calculateTotal = () => {
-    const basePrice = 85.5;
-    const toppingPrice = selectedToppings.length * 5;
-    return (basePrice + toppingPrice) * quantity;
+  const handleQuantityChange = (change) => {
+    setQuantity(prev => Math.max(1, prev + change));
   };
-  const history = useHistory();
-  const handleSiparis = (e) => {
-    e.preventDefault();
-    history.push("/SiparisSonuc");
-  };
+
+  const totalPrice = (basePrice + toppings.length * toppingPrice) * quantity;
 
   return (
-    <div className="p-8">
-      <h2 className="text-xl mt-4">Position Absolute Acı Pizza</h2>
-      <p className="text-gray-500">85.50₺</p>
+    <Card>
+      <CardBody>
+        <CardTitle tag="h1">Position Absolute Acı Pizza</CardTitle>
+        <CardText tag="h4">{basePrice}₺</CardText>
+        <CardText>4.9 (200)</CardText>
 
-      <Form>
-        <FormGroup>
-          <Label>Boyut Seç *</Label>
-          {boyutlar.map((size) => (
-            <FormGroup check key={size}>
-              <Label check>
-                <Input
-                  type="radio"
-                  name="size"
-                  value={size}
-                  onChange={() => setSelectedSize(size)}
-                />{" "}
-                {size}
-              </Label>
-            </FormGroup>
-          ))}
-        </FormGroup>
-
-        <FormGroup>
-          <Label>Hamur Seç :</Label>
-          <Input
-            type="select"
-            onChange={(e) => setSelectedDough(e.target.value)}
-            value={selectedDough}
-          >
-            {hamurKalinlik.map((type) => (
-              <option key={type} value={type}>
-                {type}
-              </option>
+        <Form>
+          <FormGroup>
+            <Label>Boyut Seç *</Label>
+            {['Küçük', 'Orta', 'Büyük'].map(s => (
+              <Input key={s} type="radio" id={s} name="size" label={s} onChange={() => setSize(s)} />
             ))}
-          </Input>
-        </FormGroup>
+          </FormGroup>
 
-        <FormGroup>
-          <Label>Ek Malzemeler (Max 7 Seçim)</Label>
-          <Row>
-            {ekMalzeme.map((topping) => (
-              <Col xs="6" md="4" key={topping}>
-                <FormGroup check>
-                  <Label check>
-                    <Input
-                      type="checkbox"
-                      value={topping}
-                      checked={selectedToppings.includes(topping)}
-                      onChange={() => handleToppingChange(topping)}
-                    />{" "}
-                    {topping}
-                  </Label>
-                </FormGroup>
-              </Col>
+          <FormGroup>
+            <Label for="dough">Hamur Seç *</Label>
+            <Input type="select" id="dough" value={dough} onChange={(e) => setDough(e.target.value)}>
+              <option>Hamur Kalınlığı</option>
+              <option>İnce Hamur</option>
+            </Input>
+          </FormGroup>
+
+          <FormGroup>
+            <Label>Ek Malzemeler (5₺)</Label>
+            {toppingOptions.map(topping => (
+              <Input
+                key={topping}
+                type="checkbox"
+                id={topping}
+                label={topping}
+                checked={toppings.includes(topping)}
+                onChange={() => handleToppingChange(topping)}
+              />
             ))}
+          </FormGroup>
+
+          <FormGroup>
+            <Label for="note">Sipariş Notu</Label>
+            <Input
+              type="textarea"
+              id="note"
+              value={note}
+              onChange={(e) => setNote(e.target.value)}
+              placeholder="Siparişine eklemek istediğin bir not var mı?"
+            />
+          </FormGroup>
+
+          <Row className="mb-3">
+            <Col>
+              <Button color="secondary" onClick={() => handleQuantityChange(-1)}>-</Button>
+            </Col>
+            <Col>{quantity}</Col>
+            <Col>
+              <Button color="secondary" onClick={() => handleQuantityChange(1)}>+</Button>
+            </Col>
           </Row>
-        </FormGroup>
 
-        <FormGroup>
-          <Label>Sipariş Notu</Label>
-          <Input
-            type="text"
-            value={note}
-            onChange={(e) => setNote(e.target.value)}
-            placeholder="Siparişe eklemek istediğiniz bir not var mı?"
-          />
-        </FormGroup>
-
-        <FormGroup className="d-flex align-items-center gap-2">
-          <Button
-            color="secondary"
-            onClick={() => setQuantity(Math.max(1, quantity - 1))}
-          >
-            -
-          </Button>
-          <span>{quantity}</span>
-          <Button color="secondary" onClick={() => setQuantity(quantity + 1)}>
-            +
-          </Button>
-        </FormGroup>
-
-        <Card className="w-80">
-          <CardBody>
-            <p>Seçimler: {selectedToppings.join(", ") || "Yok"}</p>
-            <p className="font-bold">Toplam: {calculateTotal().toFixed(2)}₺</p>
-            <Button
-              color="primary"
-              className="mt-4 w-full"
-              onClick={handleSiparis}
-            >
-              Sipariş Ver
-            </Button>
-          </CardBody>
-        </Card>
-      </Form>
-    </div>
+          <CardText>Seçimler: {toppings.length * toppingPrice}₺</CardText>
+          <CardText className="text-danger">Toplam: {totalPrice.toFixed(2)}₺</CardText>
+          <Button color="warning">SİPARİŞ VER</Button>
+        </Form>
+      </CardBody>
+    </Card>
   );
 };
 
-export default SiparisForm;
+export default PizzaOrderForm;
