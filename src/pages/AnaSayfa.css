@@ -1,2 +1,48 @@
+body {
+  background-image: url(/images/iteration-1-images/home-banner.png);
+  background-position: center;
+  background-size: cover;
+}
 
-@import "tailwindcss";
+.anaSayfaContainer {
+  margin-top: 5rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  align-items: center;
+}
+
+.anaSayfaLogo {
+  color: white;
+  font-size: 2rem;
+  font-family: "Satisfy", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.aciktimBtn {
+  background: #fdc913;
+  padding: 1rem 2rem;
+  border: 1px solid rgba(0, 0, 0, 0);
+  border-radius: 1.5rem;
+  cursor: pointer;
+  width: 25%;
+
+  font-family: "Barlow", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  text-align: center;
+}
+
+.anaSayfaYazi {
+  margin: auto;
+  text-align: center;
+  color: white;
+  font-size: 3.5rem;
+  padding: 1rem;
+  width: 60%;
+  font-family: "Barlow", sans-serif;
+  font-weight: 200;
+  font-style: normal;
+}

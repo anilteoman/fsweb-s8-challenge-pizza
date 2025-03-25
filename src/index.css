@@ -8,13 +8,6 @@ body {
   align-items: center;
   justify-content: flex-start;
   font-family: Arial, sans-serif;
-  background-image: url(/images/iteration-1-images/home-banner.png);
-  background-position: center;
-  background-size: cover;
   
-}
-#root {
-  margin-top: 5rem;
-  text-align: center;
   
 }
