@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import { Button, Card, CardBody, CardTitle, CardText, Form, FormGroup, Label, Input, Col, Row,} from 'reactstrap';
+import "./SiparisForm.css"
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
-const PizzaOrderForm = () => {
+
+const SiparisForm = () => {
   const [size, setSize] = useState('');
   const [dough, setDough] = useState('Hamur Kalınlığı');
   const [toppings, setToppings] = useState([]);
@@ -27,12 +30,17 @@ const PizzaOrderForm = () => {
 
   const totalPrice = (basePrice + toppings.length * toppingPrice) * quantity;
 
+  const history = useHistory();
+  const siparisOzeti = (e) => {
+    e.preventDefault();
+    history.push("/SiparisSonuc")
+  }
   return (
     <Card>
       <CardBody>
         <CardTitle tag="h1">Position Absolute Acı Pizza</CardTitle>
-        <CardText tag="h4">{basePrice}₺</CardText>
-        <CardText>4.9 (200)</CardText>
+        <CardText tag="h4">{basePrice}₺</CardText><CardText>4.9 (200)</CardText>
+        
 
         <Form>
           <FormGroup>
@@ -45,7 +53,7 @@ const PizzaOrderForm = () => {
           <FormGroup>
             <Label for="dough">Hamur Seç *</Label>
             <Input type="select" id="dough" value={dough} onChange={(e) => setDough(e.target.value)}>
-              <option>Hamur Kalınlığı</option>
+              <option>Standart</option>
               <option>İnce Hamur</option>
             </Input>
           </FormGroup>
@@ -87,11 +95,11 @@ const PizzaOrderForm = () => {
 
           <CardText>Seçimler: {toppings.length * toppingPrice}₺</CardText>
           <CardText className="text-danger">Toplam: {totalPrice.toFixed(2)}₺</CardText>
-          <Button color="warning">SİPARİŞ VER</Button>
+          <Button color="warning" onClick={siparisOzeti}>SİPARİŞ VER</Button>
         </Form>
       </CardBody>
     </Card>
   );
 };
 
-export default PizzaOrderForm;
+export default SiparisForm;
