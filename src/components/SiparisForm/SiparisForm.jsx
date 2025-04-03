@@ -33,7 +33,7 @@ const malzemeler = [
 
 const hataMesajlari = {
   isim: "Ad Soyad en az 3 karakter içermelidir.",
-  malzemeler: "En az 4 en fazla 10 malzeme seçebilirsiniz.",
+  malzemeler: "En az 4 en fazla 10 malzeme seçmelisiniz.",
 };
 
 const SiparisForm = () => {
@@ -59,7 +59,7 @@ const SiparisForm = () => {
   const history = useHistory();
 
   const [adet, setAdet] = useState(1);
-  const baseFiyat = 85.5;
+  const baseFiyat = 85.50;
   const ekMalzemeFiyat = 5;
 
  
@@ -172,6 +172,7 @@ const SiparisForm = () => {
                 </legend>
                 <FormGroup check>
                   <Input
+                    data-cy="boyutSmall"
                     name="boyut"
                     type="radio"
                     value="S"
@@ -224,6 +225,7 @@ const SiparisForm = () => {
     {malzemeler.map((malzeme) => (
       <label key={malzeme} className="checkbox-item">
         <Input
+          data-cy="malzemeInput"
           type="checkbox"
           name="malzemeler"
           value={malzeme}
@@ -237,10 +239,11 @@ const SiparisForm = () => {
 </FormGroup>
             <FormGroup>
               <Label for="isim" className="formBaslik">
-                Ad Soyad
+                İsim
               </Label>
               {errors.isim && <p className ="kirmizi">{hataMesajlari.isim}</p>}
               <Input
+              data-cy="isimInput"
                 id="isim"
                 name="isim"
                 placeholder="Ad Soyad"
@@ -263,10 +266,10 @@ const SiparisForm = () => {
             <div className="formFooterContainer">
               <FormGroup className="bold">
                 <Button color="warning"  onClick={() => handleAdetChange(-1)}>
-                  <span className="bold">-</span>
+                  <span className="bold" data-cy="eksi">-</span>
                 </Button>
                 {adet}
-                <Button color="warning" onClick={() => handleAdetChange(+1)}>
+                <Button data-cy="arti" color="warning" onClick={() => handleAdetChange(+1)}>
                   <span className="bold" >+</span>
                 </Button>
               </FormGroup>
@@ -283,6 +286,7 @@ const SiparisForm = () => {
                   </div>
                 </div>
                 <Button
+                  data-cy="submitBtn"
                   className="siparisVerButon bold koyugri"
                   type="submit"
                   onClick={handleSubmit}
