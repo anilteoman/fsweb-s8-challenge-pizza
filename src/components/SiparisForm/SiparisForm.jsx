@@ -1,5 +1,7 @@
+import axios from "axios";
 import React from "react";
 import { useState } from "react";
+import { useHistory } from "react-router-dom";
 import {
   Button,
   Card,
@@ -13,14 +15,72 @@ import {
   FormGroup,
 } from "reactstrap";
 
+const malzemeler = [
+  "Pepperoni",
+  "Sosis",
+  "Kanada Jambonu",
+  "Tavuk Izgara",
+  "Soğan",
+  "Domates",
+  "Mısır",
+  "Sucuk",
+  "Jalepeno",
+  "Sarımsak",
+  "Biber",
+  "Ananas",
+  "Kabak",
+];
+
+const hataMesajlari = {
+  isim: "Ad Soyad en az 3 karakter içermelidir.",
+  malzeme: "En az 4 en fazla 10 malzeme seçebilirsiniz.",
+};
+
 const SiparisForm = () => {
   const [formData, setFormData] = useState({
     isim: "",
     boyut: "",
     hamurKalinlik: "",
     malzemeler: [],
-    siparisnotu: "",
+    siparisNotu: "",
   });
+
+  const history = useHistory();
+
+  const handleChange = (event) => {
+    const { name, value, type, checked } = event.target;
+
+    if (type === "checkbox") {
+      if (checked) {
+        setFormData({
+          ...formData,
+          malzemeler: [...formData.malzemeler, value],
+        });
+      } else {
+        setFormData({
+          ...formData,
+          malzemeler: formData.malzemeler.filter((item) => item !== value),
+        });
+      }
+    } else {
+      setFormData({ ...formData, [name]: value });
+    }
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log("Submitting formData:", formData);
+
+    axios
+      .post("https://reqres.in/api/pizza", formData)
+      .then((res) => {
+        console.log("Response:", res.data);
+        history.push("/SiparisSonuc");
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  };
 
   return (
     <>
@@ -50,44 +110,88 @@ const SiparisForm = () => {
                   Boyut Seç<span> *</span>
                 </legend>
                 <FormGroup check>
-                  <Input name="boyut" type="radio" /> <Label check>Küçük</Label>
+                  <Input
+                    name="boyut"
+                    type="radio"
+                    value="small"
+                    onChange={handleChange}
+                  />
+                  <Label check>Küçük</Label>
                 </FormGroup>
                 <FormGroup check>
-                  <Input name="boyut" type="radio" /> <Label check>Orta</Label>
+                  <Input
+                    name="boyut"
+                    type="radio"
+                    value="med"
+                    onChange={handleChange}
+                  />
+                  <Label check>Orta</Label>
                 </FormGroup>
                 <FormGroup check>
-                  <Input name="boyut" type="radio" /> <Label check>Büyük</Label>
+                  <Input
+                    name="boyut"
+                    type="radio"
+                    value="large"
+                    onChange={handleChange}
+                  />
+                  <Label check>Büyük</Label>
                 </FormGroup>
               </FormGroup>
               <FormGroup>
                 <Label className="formBaslik" for="hamurKalinlik">
                   Hamur Kalınlığı <span> *</span>
                 </Label>
-                <Input id="hamurKalinlik" name="hamurKalinlik" type="select">
-                  <option>Standart</option>
-                  <option>İnce Kenar</option>
+                <Input
+                  id="hamurKalinlik"
+                  name="hamurKalinlik"
+                  type="select"
+                  onChange={handleChange}
+                >
+                  <option value="">Seçiniz</option>
+                  <option value="Standart">Standart</option>
+                  <option value="İnce Kenar">İnce Kenar</option>
                 </Input>
               </FormGroup>
             </FormGroup>
 
-            <FormGroup>
-              <legend className="formBaslik">
-                Ek Malzemeler (5₺)<span> *</span>
-              </legend>
-              <Input type="checkbox" />{" "}
-              <Label check>checkboxlar ekmalzeler ile maplenecek</Label>
-            </FormGroup>
+            <FormGroup className="checkbox-container">
+  <legend className="formBaslik">
+    Ek Malzemeler (5₺)<span> *</span>
+  </legend>
+  <div className="checkbox-grid">
+    {malzemeler.map((malzeme) => (
+      <label key={malzeme} className="checkbox-item">
+        <Input
+          type="checkbox"
+          name="malzemeler"
+          value={malzeme}
+          checked={formData.malzemeler.includes(malzeme)}
+          onChange={handleChange}
+        />
+        {malzeme}
+      </label>
+    ))}
+  </div>
+</FormGroup>
             <FormGroup>
               <Label for="isim" className="formBaslik">
                 Ad Soyad (en az 3 karakter olacak)
               </Label>
-              <Input id="isim" name="isim" placeholder="Ad Soyad" type="text" />
+              <Input
+                id="isim"
+                name="isim"
+                placeholder="Ad Soyad"
+                type="text"
+                value={formData.isim}
+                onChange={handleChange}
+              />
             </FormGroup>
             <FormGroup className="formBaslik">
-              <Label for="exampleText">Sipariş Notu</Label>
+              <Label for="siparisNotu">Sipariş Notu</Label>
               <Input
-                id="exampleText"
-                name="text"
+                onChange={handleChange}
+                id="siparisNotu"
+                name="siparisNotu"
                 type="textarea"
                 placeholder="Siparişine eklemek istediğin bir not var mı?"
               />
@@ -115,7 +219,13 @@ const SiparisForm = () => {
                     <p>110 ₺</p>
                   </div>
                 </div>
-                <Button className="siparisVerButon bold koyugri">SİPARİŞ VER</Button>
+                <Button
+                  className="siparisVerButon bold koyugri"
+                  type="submit"
+                  onClick={handleSubmit}
+                >
+                  SİPARİŞ VER
+                </Button>
               </FormGroup>
             </div>
           </Form>
