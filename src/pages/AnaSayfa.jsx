@@ -3,7 +3,8 @@ import React from "react";
 
 const AnaSayfa = () => {
   return (
-    <div className="anaSayfaArkaplan">
+    <>
+    <div className="homeBG">
     <div className="anaSayfaContainer">
       <img src="\images\iteration-1-images\logo.svg" alt="ty logo" />
 
@@ -14,6 +15,7 @@ const AnaSayfa = () => {
       </a>
     </div>
     </div>
+    </>
   );
 };
 

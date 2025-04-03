@@ -1,109 +1,191 @@
-@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quattrocento:wght@400;700&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Satisfy&display=swap');
-´
+@import url("https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quattrocento:wght@400;700&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Satisfy&display=swap");
+
+/* genel */
+
+.bold {
+  font-weight: bold;
+}
+
+/* yazi renkleri */
+.acikgri {
+  color:#5F5F5F;
+}
+
+.koyugri {
+  color: #292929;
+}
+
+.kirmizi {
+  color: #ce2829;
+}
+
+.sari {
+  color: #fdc913;
+}
+
+.bej {
+  color: #FAF7F2;
+}
+
 
 /* ANASAYFA CSS */
 
-  .anaSayfaArkaplan {
-    width: 100vw; 
-    height: 100vh; 
-    background-image: url(/images/iteration-1-images/home-banner.png);
-    background-position: center;
-    background-size: cover;
-    
-  }
-  
-  .anaSayfaContainer {
-    margin-top: 5rem;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    gap: 0.7rem;
-    align-items: center;
-  }
-  
-  
-  .aciktimBtn {
-    background: #fdc913;
-    padding: 1rem 2rem;
-    border: 1px solid rgba(0, 0, 0, 0);
-    border-radius: 1.5rem;
-    cursor: pointer;
-    width: 25%;
-    text-decoration: none;
-    color: black;
-  
-    font-family: "Barlow", sans-serif;
-    font-weight: 500;
-    font-style: normal;
-    text-align: center;
-  }
-  
-  .anaSayfaYazi {
-    margin: auto;
-    text-align: center;
-    color: white;
-    font-size: 3.5rem;
-    padding: 1rem;
-    width: 60%;
-    font-family: "Barlow", sans-serif;
-    font-weight: 200;
-    font-style: normal;
-  }
+.homeBG {
+  width: 100vw;
+  height: 100vh;
+  background-image: url(/images/iteration-1-images/home-banner.png);
+  background-position: center;
+  background-size: cover;
+}
 
-  
+.anaSayfaContainer {
+  padding-top: 5rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  align-items: center;
+}
 
-  /* SIPARIS SAYFASI */
+.anaSayfaYazi {
+  margin: auto;
+  text-align: center;
+  color: white;
+  font-size: 3.5rem;
+  padding: 1rem;
+  width: 60%;
+  font-family: "Barlow", sans-serif;
+  font-weight: 200;
+  font-style: normal;
+}
 
-  
+.aciktimBtn {
+  background: #fdc913;
+  padding: 1rem 2rem;
+  border: 1px solid rgba(0, 0, 0, 0);
+  border-radius: 1.5rem;
+  cursor: pointer;
+  width: 10rem;
+  text-decoration: none;
+  color: black;
+
+  font-family: "Barlow", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  text-align: center;
+}
+
+/* SIPARIS SAYFASI */
 
 .siparisHeader {
-    
-    background: #CE2829;
-    
-    display: flex;
-    flex-direction: column;
+  background: #ce2829;
+
+  display: flex;
+  flex-direction: column;
 }
 .siparisHeaderLogo {
-    scale: 0.4;
+  scale: 0.4;
   padding: 0.1rem;
 }
 
-
 nav a {
-    font-size: 0.7rem;
-    text-decoration: none;
-    color: white;
+  font-size: 0.7rem;
+  text-decoration: none;
+  color: white;
 }
 
 /* SIPARIS FORM */
+  .siparisFormContainer {
+    width: 70%;
+    display:block;
+    margin: 2rem auto;
+    border: none;
+  }
+
+  .siparisSubtitle {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.5rem;
+    align-items: center;
+    font-weight: bold;
+
+  }
+
+  .siparisSubtitle p {
+    color: #5F5F5F;
+    font-size: 1rem;
+    padding-top: 1rem;
+    font-weight: normal;
+  }
+
+  .formBaslik {
+    color:#292929;
+    font-size: 1rem;
+    font-weight: bold;
+  }
+
+  .formBaslik span {
+    color:red;
+  }
+
+  .boyutVeKalinlik {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .formFooterContainer {
+    display: flex;
+    justify-content: space-between;
+  }
+  .siparisVerContainer {
+    border: 1px #5F5F5F solid;
+    border-radius: .5rem;
+    padding: 2.5rem;
+    flex-grow: 2;
+  }
+  .siparisToplam {
+    padding-right: 5rem;
+  }
+
+  .siparisVerSecimler {
+    color:#292929;
+    display: flex;
+    justify-content: space-between;}
+
+    .siparisVerToplam {
+      display: flex;
+      justify-content: space-between;}
+  
+  .siparisVerButon {
+    background-color:#fdc913;
+    width: 100%;
+
+  }
+  
 
 
 /* SIPARIS SONUC */
 
 .siparisSonucFullscreen {
-  width: 100vw; 
-  height: 100vh; 
-  background-color: #CE2829;             
+  width: 100vw;
+  height: 100vh;
+  background: #ce2829;
 }
 
-
 .siparisSonucContainer {
-    
-    padding-top: 5rem;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    gap: 6rem;
-    align-items: center;
-  }
-  
+  padding-top: 5rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 6rem;
+  align-items: center;
+}
 
 img {
-    scale:0.7;
+  scale: 0.7;
 }
 
 .siparisSonucYazi {
-    
   text-align: center;
   color: white;
   font-size: 3.5rem;
