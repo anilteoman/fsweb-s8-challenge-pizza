@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Button, Card, CardBody, CardTitle, CardText, Form, FormGroup, Label, Input, Col, Row,} from 'reactstrap';
-import "./SiparisForm.css"
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 

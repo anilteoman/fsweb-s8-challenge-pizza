@@ -2,7 +2,6 @@ import React from 'react'
 
 
 import SiparisForm from '../components/SiparisForm/SiparisForm';
-import "./siparisSayfa.css"
 
 
 

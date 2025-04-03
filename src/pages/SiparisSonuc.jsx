@@ -1,8 +1,8 @@
 import React from "react";
-import "./SiparisSonuc.css";
 
 const SiparisSonuc = () => {
   return (
+    <div className="siparisSonucFullscreen">
     <div className="siparisSonucContainer">
       <img src="\images\iteration-1-images\logo.svg" alt="ty logo" />
 
@@ -11,6 +11,7 @@ const SiparisSonuc = () => {
         <br />
         SİPARİŞİNİZ ALINDI!
       </p>
+    </div>
     </div>
   );
 };
