@@ -7,7 +7,7 @@ export default function Footer() {
       style={{
         display: "flex",
         flexDirection: "column",
-        backgroundColor: "#161616",
+        backgroundColor: "#292929",
         color: "white",
         justifyContent: "center",
       }}
@@ -16,7 +16,7 @@ export default function Footer() {
         <div className="a">
           <img
             src="../images/iteration-2-images/footer/logo-footer.svg"
-            style={{ width: "80%", height: "60%" }}
+            style={{ width: "80%", height: "50%" }}
           />
 
           <p>
@@ -44,23 +44,23 @@ export default function Footer() {
 
         <div className="b">
           <h3>Hot Menu</h3>
-          <p style={{ marginTop: "1.5rem" }}>Terminal Pizza</p>
-          <p>5 Kişilik Hackathlon Pizza</p>
-          <p>useEffect Tavuklu Pizza</p>
-          <p>Beyaz Console Frosty</p>
-          <p>Testler Geçti Mutlu Burger</p>
-          <p>Position Absolute Acı Burger</p>
+          <a href='#' style={{ marginTop: "1.5rem", textDecoration:"none", color:"white" ,paddingBottom:"1rem"}}>Terminal Pizza</a>
+          <a href='#'style={{textDecoration:"none", color:"white", paddingBottom:"1rem"}}>5 Kişilik Hackathlon Pizza</a>
+          <a href="#" style={{textDecoration:"none", color:"white",paddingBottom:"1rem"}}>useEffect Tavuklu Pizza</a>
+          <a href='#' style={{textDecoration:"none", color:"white",paddingBottom:"1rem"}}>Beyaz Console Frosty</a>
+          <a href='#' style={{textDecoration:"none", color:"white",paddingBottom:"1rem"}}>Testler Geçti Mutlu Burger</a>
+          <a href='#' style={{textDecoration:"none", color:"white"}}>Position Absolute Acı Burger</a>
         </div>
 
         <div className="c">
-          <h3 style={{ fontFamily: "Barlow" }}>Instagram</h3>
+          <h3>Instagram</h3>
           <div
             style={{
-              marginTop: "2rem",
+              marginTop: "1rem",
               display: "flex",
               flexWrap: "wrap",
               justifyContent: "center",
-              gap: "1rem",
+              
               maxWidth: "400px",
             }}
           >
@@ -97,10 +97,9 @@ export default function Footer() {
 
       <p
         style={{
-          margin: "0 16rem",
+          margin: "0 20rem",
           padding: "1rem",
           fontSize: "1rem",
-          fontFamily: "Barlow",
           display: "flex",
           justifyContent: "space-between",
           textAlign: "center",

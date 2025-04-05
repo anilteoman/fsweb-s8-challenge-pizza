@@ -17,14 +17,25 @@ const SiparisSonuc = () => {
           SİPARİŞ ALINDI
           <hr />
         </p>
-
         <div className="siparisOzeti bej">
-          <p>Boyut : <span className="bold">{response.boyut}</span></p> 
-          <p>Hamur : <span className="bold"> {response.hamurKalinlik}</span></p> 
-          <p>Ek Malzemeler :<span className="bold"> {response.malzemeler?.join(", ") || "Yok"}</span></p> 
+          <p className="bold">Position Absolute Acı Pizza</p>
+          <div className="pizzaOzellik">
+          <p>
+            Boyut : <span className="bold">{response.boyut}</span>
+          </p>
+          <p>
+            Hamur : <span className="bold"> {response.hamurKalinlik}</span>
+          </p>
+          <p>
+            Ek Malzemeler :
+            <span className="bold">
+              {" "}
+              {response.malzemeler?.join(", ") || "Yok"}
+            </span>
+          </p>
+          </div>
 
-
-          <div className ="siparisToplamOzet bold">
+          <div className="siparisToplamOzet bold">
             <p className="siparisToplam">Sipariş Toplamı</p>
             <div className="siparisVerSecimler">
               <p>Seçimler</p>
@@ -37,9 +48,8 @@ const SiparisSonuc = () => {
           </div>
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </div>
-    
   );
 };
 
