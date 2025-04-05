@@ -1,7 +1,7 @@
 import React from 'react'
 
 
-import SiparisForm from '../components/SiparisForm/SiparisForm';
+import SiparisForm from '../components/SiparisForm';
 
 
 

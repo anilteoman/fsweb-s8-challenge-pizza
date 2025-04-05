@@ -107,9 +107,9 @@ const SiparisForm = () => {
 
     if (name === "malzemeler") {
       if (formData.malzemeler.length < 4 || formData.malzemeler.length > 10) {
-        setErrors({ ...errors, [name]: true }); // Hata varsa true
+        setErrors({ ...errors, [name]: true });
       } else {
-        setErrors({ ...errors, [name]: false }); // Doğruysa false
+        setErrors({ ...errors, [name]: false });
       }
     }
   };
@@ -129,12 +129,13 @@ const SiparisForm = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log("Submitting formData:", formData);
+    
 
     axios
       .post("https://reqres.in/api/pizza", formData)
       .then((res) => {
         console.log("Response:", res.data);
-        history.push("/SiparisSonuc");
+        history.push("/SiparisSonuc", { response: res.data });
       })
       .catch((error) => {
         console.error("Error:", error);
