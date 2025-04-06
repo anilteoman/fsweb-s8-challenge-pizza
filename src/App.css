@@ -80,6 +80,24 @@
   text-align: center;
 }
 
+
+/* anasayfa v2 */
+
+
+.cardSiparisVerBtn {
+  color: #ce2829 !important;
+  background-color: #faf7f2;
+  border-radius: 40px !important;
+  border-color: white;
+  margin-top: 5px;
+  padding: 11px 25px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  font-family: "Barlow";
+}
+
+
+
 /* SIPARIS SAYFASI */
 
 .siparisHeader {
@@ -320,8 +338,6 @@ footer {
 
   .footermain {
     flex-direction: column;
-    margin-left :1rem;
+    margin-left: 1rem;
   }
-  
-
 }
