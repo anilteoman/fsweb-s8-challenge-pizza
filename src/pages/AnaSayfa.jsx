@@ -29,7 +29,7 @@ const AnaSayfa = () => {
           </a>
         </div>
       </div>
-      <section
+      <section className="navbtns"
         style={{
           padding: "1rem",
           display: "flex",
@@ -63,16 +63,7 @@ const AnaSayfa = () => {
           text={"Gazlı İçecek"}
         />
       </section>
-      <section
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          flexDirection: "row",
-          backgroundColor: "#FAF7F2",
-          gap: "1rem",
-          paddingTop: "4rem",
-        }}
-      >
+      <section  className="mainCardsContainer">
         <Card
           style={{
             backgroundImage: `url('../images/iteration-2-images/cta/kart-1.png')`,
@@ -138,7 +129,7 @@ const AnaSayfa = () => {
 
 
        
-      <section
+      <section className="navbtns"
         style={{
           padding: "1rem",
           display: "flex",
@@ -179,13 +170,12 @@ const AnaSayfa = () => {
 
        {/*alt bölüm kartlar*/}
 
-      <section
+      <section className="altCards"
         style={{
           padding: "1rem",
           display: "flex",
           textAlign: "center",
           alignItems: "center",
-          flexDirection: "row",
           background: "#FAF7F2",
           justifyContent: "center",
           gap: "1.8rem",
@@ -208,7 +198,7 @@ const AnaSayfa = () => {
       </section>
 
       {/*fOOTER*/}
-      
+
       <Footer />
     </>
   );

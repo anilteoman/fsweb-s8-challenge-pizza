@@ -2,7 +2,7 @@ import React from 'react'
 
 
 import SiparisForm from '../components/SiparisForm';
-
+import Footer from '../components/Footer'
 
 
 const SiparisSayfa = () => {
@@ -25,7 +25,7 @@ const SiparisSayfa = () => {
 
 
 
-
+      <Footer />
 
       </div> 
   )

@@ -95,16 +95,7 @@ export default function Footer() {
 
       <div style={{ borderBottom: "1px solid gray", margin: "10px 0" }}></div>
 
-      <p
-        style={{
-          margin: "0 20rem",
-          padding: "1rem",
-          fontSize: "1rem",
-          display: "flex",
-          justifyContent: "space-between",
-          textAlign: "center",
-        }}
-      >
+      <p className='footerAltYazi'>
         © 2023 Teknolojik Yemekler. <FontAwesomeIcon icon={faTwitter} />
       </p>
     </footer>

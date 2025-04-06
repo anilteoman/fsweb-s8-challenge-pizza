@@ -148,6 +148,7 @@ const SiparisForm = () => {
     <>
       <Card className="siparisFormContainer">
         <CardBody>
+          <div className="it2FormHeader">
           <CardTitle tag="h5">Position Absolute Acı Pizza</CardTitle>
 
           <CardSubtitle className="siparisSubtitle koyugri" tag="h6">
@@ -164,6 +165,7 @@ const SiparisForm = () => {
             kökenli lezzetli bir yemektir. Küçük bir pizzaya bazen pizzetta
             denir.
           </CardText>
+          </div>
 
           <Form>
             <FormGroup className="boyutVeKalinlik" tag="fieldset">
@@ -209,6 +211,7 @@ const SiparisForm = () => {
                   name="hamurKalinlik"
                   type="select"
                   onChange={handleChange}
+                  style={{background:'#faf7f2',}}
                 >
                   <option value="">Seçiniz</option>
                   <option value="Standart">Standart</option>
@@ -225,13 +228,14 @@ const SiparisForm = () => {
   <div className="checkbox-grid">
     {malzemeler.map((malzeme) => (
       <label key={malzeme} className="checkbox-item">
-        <Input
+        <Input className="checkboxIT2"
           data-cy="malzemeInput"
           type="checkbox"
           name="malzemeler"
           value={malzeme}
           checked={formData.malzemeler.includes(malzeme)}
           onChange={handleChange}
+          
         />
         {malzeme}
       </label>
@@ -251,6 +255,7 @@ const SiparisForm = () => {
                 type="text"
                 value={formData.isim}
                 onChange={handleChange}
+                style={{background:'#faf7f2'}}
               />
             </FormGroup>
             <FormGroup className="formBaslik">
@@ -261,6 +266,7 @@ const SiparisForm = () => {
                 name="siparisNotu"
                 type="textarea"
                 placeholder="Siparişine eklemek istediğin bir not var mı?"
+                style={{background:'#faf7f2'}}
               />
             </FormGroup>
             <hr />
