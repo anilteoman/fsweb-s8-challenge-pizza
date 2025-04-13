@@ -5,7 +5,7 @@ describe('template spec', () => {
     cy.get('.aciktimBtn').click();
 
     cy.get('[data-cy="boyutSmall"]').check();
-    cy.get('select[name="hamurKalinlik"]').select('Standart');
+    cy.get('select[name="hamurKalinlik"]').select('İnce Kenar');
 
     cy.get('[data-cy="malzemeInput"]').eq(0).check();
     cy.get('[data-cy="malzemeInput"]').eq(1).check();

@@ -21,7 +21,7 @@ const AnaSayfa = () => {
       <div className="homeBG">
         <div className="anaSayfaContainer">
           <img src="\images\iteration-1-images\logo.svg" alt="ty logo" />
-
+          <span className="sariYazi">fırsatı kaçırma</span>
           <p className="anaSayfaYazi">KOD ACIKTIRIR PIZZA, DOYURUR</p>
 
           <a href="/SiparisSayfa" className="aciktimBtn">
@@ -47,6 +47,7 @@ const AnaSayfa = () => {
           text={"Pizza"}
         />
         <NavButtons siparisLink={siparisLink}
+          
           src={"../images/iteration-2-images/icons/3.svg"}
           text={"Burger"}
         />
@@ -95,11 +96,12 @@ const AnaSayfa = () => {
         </Card>
         <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
           <AnaSayfaCard siparisLink={siparisLink}
+          
             src={"../images/iteration-2-images/cta/kart-2.png"}
             yazi={"Hackathlon Burger Menü"}
             color1={"white"}
           />
-          <AnaSayfaCard
+          <AnaSayfaCard siparisLink={siparisLink}
             src={"../images/iteration-2-images/cta/kart-3.png"}
             extra={"Çoooook"}
             yazi={" hızlı npm gibi kurye"}

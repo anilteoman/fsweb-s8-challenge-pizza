@@ -26,7 +26,7 @@ const AnaSayfaCard = ({ src, extra, yazi, color1 ,siparisLink}) => {
         <span style={{ color: "#CE2829" }}>{extra}</span>
         {yazi}
       </CardTitle>
-      <button      onClick={siparisLink}
+      <button      onClick={siparisLink} data-cy="anasayfa-siparisbuton"
 className="cardSiparisVerBtn">SİPARİŞ VER</button>{" "}
     </CardBody>
   </Card>
