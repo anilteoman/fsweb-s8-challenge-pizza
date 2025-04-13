@@ -36,15 +36,21 @@ const hataMesajlari = {
   malzemeler: "En az 4 en fazla 10 malzeme seçmelisiniz.",
 };
 
+const baseFiyat = 85.5;
+  const ekMalzemeFiyat = 5;
+
+  const initialMalzemeFiyat = 0;
+  const initialToplamFiyat = (baseFiyat + initialMalzemeFiyat) * 1;
+
 const SiparisForm = () => {
   const [formData, setFormData] = useState({
     isim: "",
-    boyut: "",
-    hamurKalinlik: "",
+    boyut: "S",
+    hamurKalinlik: "Standart",
     malzemeler: [],
     siparisNotu: "",
-    secimFiyat: "",
-    toplamFiyat: "",
+    secimFiyat: initialMalzemeFiyat,
+    toplamFiyat: initialToplamFiyat,
   });
 
   const [errors, setErrors] = useState({
@@ -57,23 +63,22 @@ const SiparisForm = () => {
   const history = useHistory();
 
   const [adet, setAdet] = useState(1);
-  const baseFiyat = 85.5;
-  const ekMalzemeFiyat = 5;
+  
 
   const handleAdetChange = (change) => {
     setAdet((prev) => Math.max(1, prev + change));
   };
 
-  const ekMalFiyat = formData.malzemeler.length * ekMalzemeFiyat;
-  const toplam =
-    (baseFiyat + formData.malzemeler.length * ekMalzemeFiyat) * adet;
-
   useEffect(() => {
-    setFormData({ ...formData, toplamFiyat: toplam });
-  }, [toplam]);
-  useEffect(() => {
-    setFormData({ ...formData, secimFiyat: ekMalFiyat });
-  }, [ekMalFiyat]);
+    const ekMalFiyat = formData.malzemeler.length * ekMalzemeFiyat;
+    const toplam = (baseFiyat + ekMalFiyat) * adet;
+  
+    setFormData((prev) => ({
+      ...prev,
+      secimFiyat: ekMalFiyat,
+      toplamFiyat: toplam,
+    }));
+  }, [formData.malzemeler, adet]);
 
   const handleChange = (event) => {
     const { name, value, type, checked } = event.target;
@@ -102,25 +107,20 @@ const SiparisForm = () => {
       }
     }
 
-    if (name === "malzemeler") {
-      if (formData.malzemeler.length < 4 || formData.malzemeler.length > 10) {
-        setErrors({ ...errors, [name]: true });
-      } else {
-        setErrors({ ...errors, [name]: false });
-      }
-    }
+   
   };
 
   useEffect(() => {
-    if (
-      formData.isim.replaceAll(" ", "").length >= 3 &&
-      formData.malzemeler.length >= 4 &&
-      formData.malzemeler.length <= 10
-    ) {
-      setIsValid(true);
-    } else {
-      setIsValid(false);
-    }
+    const isimValid = formData.isim.replaceAll(" ", "").length >= 3;
+    const malzemeValid =
+      formData.malzemeler.length >= 4 && formData.malzemeler.length <= 10;
+  
+    setIsValid(isimValid && malzemeValid);
+  
+    setErrors({
+      isim: !isimValid,
+      malzemeler: !malzemeValid,
+    });
   }, [formData]);
 
   const handleSubmit = (event) => {
@@ -185,6 +185,7 @@ const SiparisForm = () => {
                       data-cy="boyutSmall"
                       type="radio"
                       value="S"
+                      checked={formData.boyut === "S"}
                       name="boyut"
                       onChange={handleChange}
                     />
@@ -222,6 +223,7 @@ const SiparisForm = () => {
                   onChange={handleChange}
                   style={{ background: "#faf7f2" }}
                 >
+                  <option value="Standart">-Hamur Kalınlığı Seç-</option>
                   <option value="Standart">Standart</option>
                   <option value="İnce Kenar">İnce Kenar</option>
                 </Input>
@@ -302,11 +304,11 @@ const SiparisForm = () => {
                   <p className="siparisToplam formBaslik">Sipariş Toplamı</p>
                   <div className="siparisVerSecimler acikgri">
                     <p>Seçimler</p>
-                    <p>{ekMalFiyat} ₺</p>
+                    <p>{formData.secimFiyat} ₺</p>
                   </div>
                   <div className="siparisVerToplam kirmizi bold">
                     <p>Toplam</p>
-                    <p>{toplam} ₺</p>
+                    <p>{formData.toplamFiyat} ₺</p>
                   </div>
                 </div>
                 <Button

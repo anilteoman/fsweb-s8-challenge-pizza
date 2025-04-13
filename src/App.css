@@ -259,12 +259,12 @@
 }
 
 /* Show the checkmark when checked */
-.container input:checked ~ .checkmark:after {
+.boyutContainer input:checked ~ .checkmark:after {
   display: block;
 }
 
 /* Style the checkmark/indicator */
-.container .checkmark:after {
+.boyutContainer .checkmark:after {
   left: 9px;
   top: 5px;
   width: 5px;
