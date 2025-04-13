@@ -238,17 +238,18 @@ const SiparisForm = () => {
               <div className="checkbox-grid">
                 {malzemeler.map((malzeme) => (
                   <label key={malzeme} className="checkbox-item">
-                    <Input
-                      className="checkboxIT2"
-                      data-cy="malzemeInput"
-                      type="checkbox"
-                      name="malzemeler"
-                      value={malzeme}
-                      checked={formData.malzemeler.includes(malzeme)}
-                      onChange={handleChange}
-                    />
-                    {malzeme}
-                  </label>
+                  <Input
+                    className="checkboxIT2"
+                    data-cy="malzemeInput"
+                    type="checkbox"
+                    name="malzemeler"
+                    value={malzeme}
+                    checked={formData.malzemeler.includes(malzeme)}
+                    onChange={handleChange}
+                  />
+                  <span className="custom-checkmark">✔</span>
+                  <span className="malzeme-etiket">{malzeme}</span>
+                </label>
                 ))}
               </div>
             </FormGroup>
