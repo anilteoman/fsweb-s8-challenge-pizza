@@ -12,10 +12,11 @@ const SiparisSayfa = () => {
         
       
       <img src="images\iteration-1-images\logo.svg" alt="ty logo" className='siparisHeaderLogo'/>
-      <nav>
-        <a href="/">Ana Sayfa</a> - <a href="./SiparisSayfa">Sipariş Oluştur</a>
-      </nav>
+      
         </header>
+      <div className="formArkaplan">
+        
+      </div>
         
       
 
